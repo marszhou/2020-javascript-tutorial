@@ -378,7 +378,7 @@ var a = [1,2,2,3,4,4,4,4]
 7.补全以下代码
 
 ```js
-var arr = [1, 2, 6, 'hello', 9, 'yyy', 'wasd', 789, 123, 7], 'uiuiui', 5, 6, 'qwer']
+var arr = [1, 2, 6, 'hello', 9, 'yyy', 'wasd', 789, 123, 7, 'uiuiui', 5, 6, 'qwer']
 // 取出该数组里所有的字符串，成为一个新数组，并打印
 // 判断是否是String类型可以用: typeof 变量 == 'string'来判断
 
