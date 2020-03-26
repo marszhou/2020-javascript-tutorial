@@ -3,14 +3,16 @@
 ## 目录
 
 * 内容
-  * 数组
-  * 对象
+  * [数组](#数组)
+  * [对象](#对象)
   * [循环](#循环)
-        * [while](#while)
-        * [do ... while](#dowhile)
-        * [for](#for)
-        * [for ... in](#for--in)
-        * [break和continue](#break和continue)
+      * [while](#while)
+      * [do ... while](#dowhile)
+      * [for](#for)
+      * [for ... in](#for--in)
+      * [break和continue](#break和continue)
+  * [作业](#作业)
+  * [简单练习](#简单练习)
 
 ## 数组
 
@@ -307,7 +309,7 @@ var obj = { property_1:   value_1,   // property_# 可以是一个标识符...
   }
 ```
 
-# 作业
+## 作业
 
 1. 找出100－999之间的所有“[水仙花数](https://zh.wikipedia.org/wiki/%E6%B0%B4%E4%BB%99%E8%8A%B1%E6%95%B0)”，所谓水仙花数是指一个三位数，各位数字的立方和等于该数本身。（如153＝1^3＋5^3＋3^3）并输出这些数字，统计有多少个。并求出这些数字之和。
 
