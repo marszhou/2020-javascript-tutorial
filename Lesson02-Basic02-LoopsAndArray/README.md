@@ -329,7 +329,7 @@ var obj = { property_1:   value_1,   // property_# 可以是一个标识符...
 
 ## 简单练习
 
-**注意** 用run.html做模版，每一题单独命名，比如第一题就创建一个文件叫
+**注意** 用[run.html](../Lesson01-Basic01/run.html)做模版，每一题单独命名，比如第一题就创建一个文件叫
 
     简单练习1.html
 
