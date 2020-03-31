@@ -7,32 +7,31 @@
 
 <script>
 
-var size = 16
+var size = 9
 var c1 = '⭐️'
 var c2 = '💀'
 var middle = Math.floor(size/2)
 var content = '';
 
-if (size%2 === 0) {
-  for (var y = 0; y < size; y++) {
-    var row = ''
-    for( var x = 0; x < size; x++) {
-      if (size%2 === 0) {
-        var c = ''
-        var xx = x<middle ? x + 1 : x
-        var yy = y<middle ? y + 1 : y
-        c = Math.abs(xx - middle) + Math.abs(yy - middle) < middle ? c1:c2;
-        row += c
-      } else {
-        var c = ''
-        c = Math.abs(x - middle) + Math.abs(y - middle) <= middle ? c1:c2;
-        row += c
-      }
+
+for (var y = 0; y < size; y++) {
+  var row = ''
+  for( var x = 0; x < size; x++) {
+    if (size%2 === 0) {
+      var c = ''
+      var xx = x<middle ? x + 1 : x
+      var yy = y<middle ? y + 1 : y
+      c = Math.abs(xx - middle) + Math.abs(yy - middle) < middle ? c1:c2
+      row += c
+    } else {
+      var c = ''
+      c = Math.abs(x - middle) + Math.abs(y - middle) <= middle ? c1:c2
+      row += c
     }
-    content+=row+'\n'
   }
-} else {
+  content+=row+'\n'
 }
+
 console.log(content)
 
 </script>
