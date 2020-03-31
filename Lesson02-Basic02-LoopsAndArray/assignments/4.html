@@ -6,11 +6,29 @@
 <body>
 <script>
 var t1 = Date.now()
-var max = 1000000
+var max = 100
 var primes = [2]
 var x = 3 // 从3开始
 
+// 笨方法，运行效率低
+for(; x<max; x++) {
+  var find = true
+  for(var i=2; i<=Math.sqrt(x); i++) {
+    if (x%i === 0) {
+      find = false
+      break
+    }
+  }
+  if(find) {
+    primes.push(x)
+  }
+}
+console.log(primes)
+
+// 优化
 // (1)
+primes = [2]
+x=3
 while (x < max) {
   var find = false
 
