@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var a = [1, 2, 3, 4];
+    var flag = true;
+    for(var i = 0; i<a.length; i++) {
+      if (typeof a[i] === 'number') { // 只有在number类型的时候才检查是否<0，非number类型的都认为不需要检查
+        flag =  flag && a[i] >= 0 // 将flag和新的条件判断做“与”操作，只要a[i] >= 0 是false，flag就会变成false
+      }
+      if (!flag) {
+        break // 只要flag出现一次false，后面就不用继续循环比较了，所以break
+      }
+    }
+    console.log(flag)
+
+    // b 和 c也是一样，复制上面的代码，改一下a位置的名字为b或c
+
+    var b = [1, 2, 3, 4, -1];
+    var flag = true;
+    for(var i = 0; i<b.length; i++) {
+      if (typeof b[i] === 'number') { // 只有在number类型的时候才检查是否<0，非number类型的都认为不需要检查
+        flag =  flag && b[i] >= 0 // 将flag和新的条件判断做“与”操作，只要a[i] >= 0 是false，flag就会变成false
+      }
+      if (!flag) {
+        break // 只要flag出现一次false，后面就不用继续循环比较了，所以break
+      }
+    }
+    console.log(flag)
+
+    var c = [1, 2, 3, 4, 'a', {a:3}];
+    var flag = true;
+    for(var i = 0; i<c.length; i++) {
+      if (typeof c[i] === 'number') { // 只有在number类型的时候才检查是否<0，非number类型的都认为不需要检查
+        flag =  flag && c[i] >= 0 // 将flag和新的条件判断做“与”操作，只要a[i] >= 0 是false，flag就会变成false
+      }
+      if (!flag) {
+        break // 只要flag出现一次false，后面就不用继续循环比较了，所以break
+      }
+    }
+    console.log(flag)
+  </script>
+</body>
+</html>
