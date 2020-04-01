@@ -244,29 +244,34 @@ sum(1,2,"333", 4.5, 'a', 'some@qq.com')
   <title>Document</title>
 </head>
 <body>
+  <button onclick='run()'>运行</button>
   <div id='container'></div>
   <script>
-    var cols = parseInt(prompt('输入列数：'))
-    var rows = parseInt(prompt('输入行数：'))
+    function run() {
+      var cols = parseInt(prompt('输入列数：'))
+      var rows = parseInt(prompt('输入行数：'))
+      document.getElementById('container').innerHTML = createTable(cols, rows)
+    }
 
-    document.getElementById('container').innerHTML = '' // Your Code
-
-    `
-    <table border='1'>
-      <tr>
-        <td>0,1</td>
-        <td>0,2</td>
-        <td>0,3</td>
-        <td>0,4</td>
-      </tr>
-      <tr>
-        <td>1,1</td>
-        <td>2,2</td>
-        <td>3,3</td>
-        <td>4,4</td>
-      </tr>
-    </table>
-    `
+    function createTable() {
+      // your code
+      return `
+      <table border='1'>
+        <tr>
+          <td>0,1</td>
+          <td>0,2</td>
+          <td>0,3</td>
+          <td>0,4</td>
+        </tr>
+        <tr>
+          <td>1,1</td>
+          <td>2,2</td>
+          <td>3,3</td>
+          <td>4,4</td>
+        </tr>
+      </table>
+      `
+    }
   </script>
 
 </body>
@@ -286,14 +291,19 @@ sum(1,2,"333", 4.5, 'a', 'some@qq.com')
   <title>Document</title>
 </head>
 <body>
+  <button onclick='run()'>运行</button>
   <div id='container'></div>
   <script>
-    var cols = parseInt(prompt('输入列数：'))
-    var rows = parseInt(prompt('输入行数：'))
+    function run() {
+      var cols = parseInt(prompt('输入列数：'))
+      var rows = parseInt(prompt('输入行数：'))
 
-    document.getElementById('container').innerHTML = '' // Your Code
-    ```
-💀💀💀💀⭐️💀💀💀💀
+      document.getElementById('container').innerHTML = printGraph(cols, rows)
+    }
+
+    function  printGraph() {
+      // Your Code
+return `💀💀💀💀⭐️💀💀💀💀
 💀💀💀⭐️⭐️⭐️💀💀💀
 💀💀⭐️⭐️⭐️⭐️⭐️💀💀
 💀⭐️⭐️⭐️⭐️⭐️⭐️⭐️💀
@@ -301,12 +311,9 @@ sum(1,2,"333", 4.5, 'a', 'some@qq.com')
 💀⭐️⭐️⭐️⭐️⭐️⭐️⭐️💀
 💀💀⭐️⭐️⭐️⭐️⭐️💀💀
 💀💀💀⭐️⭐️⭐️💀💀💀
-💀💀💀💀⭐️💀💀💀💀
-    ```
+💀💀💀💀⭐️💀💀💀💀`
+    }
   </script>
-
-
-
 </body>
 </html>
 ```
