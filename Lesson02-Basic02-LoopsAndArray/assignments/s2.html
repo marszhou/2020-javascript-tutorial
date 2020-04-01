@@ -13,11 +13,19 @@
       {age: 12, name:'Lynn'},
       {age: 25, name:'David'}
     ]
-    for(var i=0; i<persons.length; i++) {
-      if (persons[i].age < 18) {
-        console.log(persons[i].name)
+
+    function findChildren(persons) {
+      var finds = []
+      for(var i=0; i<persons.length; i++) {
+        if (persons[i].age < 18) {
+          finds.push(persons[i])
+        }
       }
+      return finds
     }
+
+    console.log(findChildren(persons))
+
   </script>
 </body>
 </html>
