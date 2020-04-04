@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function listNumbers(begin,end) {
+      // 思路，用begin到end之间的数组成两位数
+      // 1.因此先找出两位数中的个位数（second），必须是奇数
+      // 2.十位数（first）是遍历begin，end之间的数
+      //  3.注意出现过的数不可能再使用例如0-3，不能组成33，要忽略这种结果
+      // 4.十位数和个位数拼起来就是结果
+      for(var second=begin;second<=end;second++){
+        if(second%2===1){ // 1
+          for(var first=begin;first<=end;first++){ // 2
+            if (first===second) continue; // 3
+            console.log(first+""+second); // 4
+          }
+        }
+      }
+    }
+  </script>
+</body>
+</html>

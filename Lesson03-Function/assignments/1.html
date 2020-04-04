@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 1
+    function sort(a, b, c) {
+      if (a>b){
+        var t = a; // 老式写法
+        a = b;
+        b = t;
+      }
+      if (b>c) {
+        [b, c] = [c, b] // 语法糖
+      }
+      if (a>b){
+        [a,b] = [b,a]
+      }
+      console.log(a, b. c)
+    }
+    // 2
+    function sort2(...ns) {
+      ns.sort((x, y) => {
+        if (x>y) return 1
+        if (x==y) return 0
+        return -1
+      })
+      console.log(ns)
+    }
+    // 3
+    function  sort3(a, b, c) {
+      if (a<=b) {
+        if (a<=c) {
+          if (b<=c) {
+            console.log(a, b, c)
+          } else {
+            sort(a, c, b)
+          }
+        } else {
+          sort(c, a, b)
+        }
+      } else {
+        sort(b, a, c)
+      }
+    }
+  </script>
+</body>
+</html>

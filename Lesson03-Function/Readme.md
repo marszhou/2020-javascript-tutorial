@@ -217,6 +217,13 @@ sum(1,2,"333", 4.5, 'a', 'some@qq.com')
 ```
 
 1. 编写一个函数，计算三个数字的大小，按从小到大顺序输出
+提示
+```js
+// 关于交换两个变量的值，有传统的写法，比如交换a，b
+var t = a; a=b; b=t;
+// 或者新语法的写法
+[a, b] = [b, a]
+```
 2. 编写生成4位数字验证码的函数，并生成10次，同时将结果打印出来
 ```js
 // 随机数可以用Math.floor(Math.random() * 10)生成
@@ -227,12 +234,20 @@ sum(1,2,"333", 4.5, 'a', 'some@qq.com')
 4. 某人A给某人B传递数据，数据是四位的整数，在传递过程中是加密的，
 加密规则如下：每位数字都加上5,然后用除以10的余数代替该数字，再将第一位和第四位交换，
 第二位和第三位交换，请编写一个函数，传入原文，输出密文，写出其加密的函数
+```js
+//如果想取字符串的第n个字符，可以用str.charAt(n)
+// 比如
+'abcd'.charAt(2) // "c"
+```
 5. 生成随机颜色
 ```js
 // 计算机中的颜色由Red，Green，Blue组成
 // 在html代码中颜色的值用 #RRGGBB的十六进制数据显示
-// 比如红色是#FF0000
-
+// 比如红色是#FF
+// 十进制数转十六进制可以用number.toString(16)
+// 比如a=100; a.toString(16) 结果是“64”
+// 注意不能写成 100.toString(16)
+// 可以是(100).toString(16)
 ```
 6. 通过函数创建表格,参数是行和列
 ```html
@@ -253,7 +268,7 @@ sum(1,2,"333", 4.5, 'a', 'some@qq.com')
       document.getElementById('container').innerHTML = createTable(cols, rows)
     }
 
-    function createTable() {
+    function createTable(cols, rows) {
       // your code
       return `
       <table border='1'>
@@ -280,7 +295,7 @@ sum(1,2,"333", 4.5, 'a', 'some@qq.com')
 7. 检查一个3位数字是否为水仙花数
 8. 通过函数返回填充的数组，比如想生成1-100的数组序列就调用函数range(1,100)
 9. 为第8题的函数添加第三个参数step，使得生成序列的步长可以自定义设置，默认值为1，比如range(1, 10, 3)返回[1, 4, 7, 10], range(1,10,4)返回[1, 5, 9]
-10. 用递归函数方法实现参数为n位的斐波那契数列
+10. 用递归函数方法计算参数为n位的斐波那契数字
 11. 用函数方法实现第二课中的棱形打印，参数是行列数
 ```html
 <!DOCTYPE html>
@@ -295,13 +310,12 @@ sum(1,2,"333", 4.5, 'a', 'some@qq.com')
   <div id='container'></div>
   <script>
     function run() {
-      var cols = parseInt(prompt('输入列数：'))
-      var rows = parseInt(prompt('输入行数：'))
+      var size = parseInt(prompt('输入大小：'))
 
-      document.getElementById('container').innerHTML = printGraph(cols, rows)
+      document.getElementById('container').innerHTML = printGraph(size)
     }
 
-    function  printGraph() {
+    function  printGraph(size) {
       // Your Code
 return `💀💀💀💀⭐️💀💀💀💀
 💀💀💀⭐️⭐️⭐️💀💀💀

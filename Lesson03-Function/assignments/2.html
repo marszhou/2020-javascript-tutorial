@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function rand4digit() {
+      var ret = ''
+      for(var i = 0; i<4; i++) {
+        ret += parseInt(Math.random()*10)
+      }
+      return ret
+    }
+
+    for(var i=0; i<10; i++) {
+      console.log(rand4digit())
+    }
+  </script>
+</body>
+</html>
