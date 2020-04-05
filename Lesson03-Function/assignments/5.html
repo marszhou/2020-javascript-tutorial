@@ -10,7 +10,7 @@
     function randomColor(){
       var result = '#'
       for(var i = 0;i < 3; i++){
-          result = parseInt(Math.random()*255).toString(16)
+        result += parseInt(Math.random()*256).toString(16)
       }
       return result
     }
