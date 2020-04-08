@@ -176,8 +176,8 @@ console.log(found);
 reduce的迭代方法与其他迭代方法略有不同，它的第一个参数是累加值，迭代方法返回下一个累加值
 
 ```js
-const array1 = [1, 2, 3, 4];
-const reducer = (accumulator, currentValue) => accumulator + currentValue;
+var array1 = [1, 2, 3, 4];
+var reducer = (accumulator, currentValue) => accumulator + currentValue;
 // 1 + 2 + 3 + 4
 console.log(array1.reduce(reducer));
 // expected output: 10
@@ -227,9 +227,59 @@ var maxCallback2 = ( max, cur ) => Math.max( max, cur );
   <script src='./products.js'></script>
 </head>
 <body>
-  <script>
-    console.log(products)
-  </script>
+<script>
+// 1.格式化所有产品的价格/蓄水量/重量/面积为数字类型/真空管数（条），如果该项没有数值，赋值为NaN，并更新products数据本身
+// 提示： producs.forEach(p => p['价格'] = xxx)
+// forEach虽然不需要返回值，但是可以给单行数据属性赋值新内容
+
+// 2.目前一条数据的长度太长，希望有一个简单版本的数据，每条数据仅需要 id 品牌 系列 型号 蓄水量 价格 6个属性，写一个映射函数
+
+
+// 3.找出所有价格>=1000 并小于等于 >2000 的产品，并用（2）的格式格式化成简单格式
+
+// 4.找出产品最多的品牌，打印产品数和品牌名称
+// 提示不一定在一个迭代方法中写得出答案
+
+// 5.通过“商品URL”找出所有在淘宝上的产品，并用（2）简化格式
+
+// 6.找出某品牌的所有支持电辅加热和自动上水的产品，并用（2）简化格式
+// 提示：用函数生成迭代函数，这样可以把品牌名称作为参数传入
+/*
+  function getFilter6(brand) {
+    return (p) => {...}
+  }
+*/
+// 或者用串联迭代方法的写法，自选其一
+
+// 7.现在某客户需要按产品id购买产品，按照数据计算出总价
+// 格式为 {id: x, count: y}
+var data7 = [
+  {id: 100332, count: 20},
+  {id: 100168, count: 2},
+  {id: 100221, count: 88},
+  {id: 100008, count: 1},
+  {id: 100175, count: 13},
+  {id: 100312, count: 30},
+  {id: 100319, count: 130},
+]
+
+// 8.找出所有能效等级为1的产品
+
+// 9.按照销量，找出最畅销的品牌名称（如果销量没有数据，该条数据就不计算）
+
+// 10.找出真空管数量一共有多少种规格（数组）
+// 例如[16, 18, 24...]
+
+// 11.一共有哪些品牌？（数组）
+
+// 12.真空管类型的材质有哪些种？（数组）
+
+// 13.现在需要按以下条件打印出最便宜的产品列表（数组），并打印总价
+// 条件 集热方式=太阳能，子类=真空管，管数为18，24, 40, 48各需要10台
+// 提示：按上面的条件应该选出最便宜的4个商品打印（按（2）格式化）并算总价
+
+
+</script>
 </body>
 </html>
 ```
