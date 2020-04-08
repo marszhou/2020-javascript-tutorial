@@ -318,7 +318,7 @@ var t = a; a=b; b=t;
 </head>
 <body>
   <button onclick='run()'>运行</button>
-  <div id='container'></div>
+  <pre id='container'></pre>
   <script>
     function run() {
       var size = parseInt(prompt('输入大小：'))
