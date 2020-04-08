@@ -186,6 +186,35 @@ console.log(array1.reduce(reducer, 5));
 // expected output: 15
 ```
 
+***注意有初始值和没有初始值的区别***
+
+```js
+var a = [1,2,3,4]
+a.reduce((acc, value) => { console.log('>'+acc, value); return value+acc})
+```
+
+```js
+var maxCallback = ( acc, cur ) => Math.max( acc.x, cur.x );
+var maxCallback2 = ( max, cur ) => Math.max( max, cur );
+
+// reduce() 没有初始值
+[ { x: 22 }, { x: 42 } ].reduce( maxCallback ); // 42
+[ { x: 22 }            ].reduce( maxCallback ); // { x: 22 }
+[                      ].reduce( maxCallback ); // TypeError
+
+// map/reduce; 这是更好的方案，即使传入空数组或更大数组也可正常执行
+[ { x: 22 }, { x: 42 } ].map( el => el.x )
+                        .reduce( maxCallback2, -Infinity );
+```
+
+## 迭代方法的串联
+
+```js
+[1,2,3,4,5].filter(v => v%2===1)
+           .map(v => 'a'+v)
+           .forEach(v => console.log(v))
+```
+
 ## 外联JS文件
 
 ```html
