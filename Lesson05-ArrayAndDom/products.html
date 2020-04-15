@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./style/style.css">
+  <script src='../Lesson04-ArrayFunctions/products.js'></script>
+  <script>
+    products.forEach(p => {
+      p['价格（¥）'] = parseInt(p['价格（¥）'].replace(',', '').replace('¥', ''))
+      p['蓄水量（L）']= parseInt(p['蓄水量（L）'])
+      p['重量（KG）'] = parseFloat(p['重量（KG）'])
+      p['真空管数（条）'] = parseInt(p['真空管数（条）'])
+    })
+  </script>
+</head>
+<body>
+<div id='sidebar'>
+  <table class='steelBlueCols'>
+    <tbody><tr>
+      <td>
+        <label><input type="checkbox" value="品牌" name="fields[]">品牌</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="系列" name="fields[]">系列</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="型号" name="fields[]">型号</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="全称" name="fields[]">全称</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="集热方式" name="fields[]">集热方式</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="子类" name="fields[]">子类</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="机组构成" name="fields[]">机组构成</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="销量" name="fields[]">销量</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="价格（¥）" name="fields[]">价格（¥）</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="商品URL" name="fields[]">商品URL</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="蓄水量（L）" name="fields[]">蓄水量（L）</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="真空管数（条）" name="fields[]">真空管数（条）</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="真空管直径（mm）" name="fields[]">真空管直径（mm）</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="真空管长度（米）" name="fields[]">真空管长度（米）</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="真空管材质" name="fields[]">真空管材质</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="真空管涂层" name="fields[]">真空管涂层</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="真空管承诺寿命（年）" name="fields[]">真空管承诺寿命（年）</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="真空管需过水？" name="fields[]">真空管需过水？</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="内胆材料" name="fields[]">内胆材料</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="内胆钢板厚度（mm）" name="fields[]">内胆钢板厚度（mm）</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="内胆寿命（年）" name="fields[]">内胆寿命（年）</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="内胆除菌？" name="fields[]">内胆除菌？</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="保温层厚度（mm）" name="fields[]">保温层厚度（mm）</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="保温层发泡技术" name="fields[]">保温层发泡技术</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="支架材料" name="fields[]">支架材料</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="支架加宽加厚？" name="fields[]">支架加宽加厚？</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="面积（m2）" name="fields[]">面积（m2）</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="重量（KG）" name="fields[]">重量（KG）</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="能效等级" name="fields[]">能效等级</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="加热功率（W）" name="fields[]">加热功率（W）</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="控制方式" name="fields[]">控制方式</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="电辅加热" name="fields[]">电辅加热</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="自动上水" name="fields[]">自动上水</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="防冻" name="fields[]">防冻</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="最大水温（°C）" name="fields[]">最大水温（°C）</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="适用最低温度（°C）" name="fields[]">适用最低温度（°C）</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="自动清洗" name="fields[]">自动清洗</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="特殊" name="fields[]">特殊</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="保热（小时）" name="fields[]">保热（小时）</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="加热体材质" name="fields[]">加热体材质</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="空晒（°C）" name="fields[]">空晒（°C）</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="板芯材料：" name="fields[]">板芯材料：</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="單板尺寸" name="fields[]">單板尺寸</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="蓋板材質" name="fields[]">蓋板材質</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="采光面積(m2)" name="fields[]">采光面積(m2)</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="適用環境溫度" name="fields[]">適用環境溫度</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><input type="checkbox" value="保修（不重要）2" name="fields[]">保修（不重要）2</label>
+      </td>
+      <td>
+        <input type="text" name="values[]">
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div id="content">
+<table class='blueTable'>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>品牌</th>
+      <th>系列</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+    <td colspan="4">
+    <div class="links"><a href="#">&laquo;</a> <a class="active" href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">&raquo;</a></div>
+    </td>
+    </tr>
+    </tfoot>
+  <tbody>
+    <tr>
+      <td>1111</td>
+      <td>2222</td>
+      <td>3333</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<script>
+
+</script>
+</body>
+</html>

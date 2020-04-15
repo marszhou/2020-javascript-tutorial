@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src='./products.js'></script>
+</head>
+<body>
+<script>
+// 1.格式化所有产品的价格/蓄水量/重量/真空管数（条）为数字类型，如果该项没有数值，赋值为NaN，并更新products数据本身
+// 提示： producs.forEach(p => p['价格'] = xxx)
+// forEach虽然不需要返回值，但是可以给单行数据属性赋值新内容
+
+products.forEach(p => {
+  p['价格（¥）'] = parseInt(p['价格（¥）'].replace(',', '').replace('¥', ''))
+  p['蓄水量（L）']= parseInt(p['蓄水量（L）'])
+  p['重量（KG）'] = parseFloat(p['重量（KG）'])
+  p['真空管数（条）'] = parseInt(p['真空管数（条）'])
+})
+
+// 2.目前一条数据的长度太长，希望有一个简单版本的数据，每条数据仅需要 id 品牌 系列 型号 蓄水量 价格 6个属性，写一个映射函数
+
+var simple = p =>
+  ['id', '品牌', '系列', '型号', '蓄水量（L）', '价格（¥）'].reduce(
+    (ret, prop) => {
+      ret[prop] = p[prop]
+      return ret
+    },
+    {}
+  )
+
+// 3.找出所有价格>=1000 并小于等于 <=2000 的产品，并用（2）的格式格式化成简单格式
+
+var r3 = products.filter(p => p['价格（¥）'] >= 1000 && p['价格（¥）'] <= 2000)
+        .map(simple)
+console.log('3.找出所有价格>=1000 并小于等于 <=2000 的产品，并用（2）的格式格式化成简单格式')
+console.log(r3)
+
+// 4.找出产品最多的品牌，打印产品数和品牌名称
+// 提示不一定在一个迭代方法中写得出答案
+var brandCountMap = products.reduce(
+  (ret, p) => {
+    var brand = p['品牌']
+    if (ret[brand]) {
+      ret[brand] += 1
+    } else {
+      ret[brand] = 1
+    }
+    return ret
+  },
+  {}
+)
+function findMaxBrandMap(map) {
+  var maxBrand, maxNum = 0
+  var brands = Object.keys(map)
+  var nums = Object.values(map)
+  nums.forEach((num, i) => {
+    if (num > maxNum) {
+      maxNum = num
+      maxBrand = brands[i]
+    }
+  })
+  return [maxBrand, maxNum]
+}
+var [maxBrand, maxNum] = findMaxBrandMap(brandCountMap)
+console.log('4.找出产品最多的品牌，打印产品数和品牌名称')
+console.log(maxBrand, maxNum)
+// 5.通过“商品URL”找出所有在淘宝上的产品，并用（2）简化格式
+var r5 = products.filter(p => p['商品URL'].indexOf('https://item.taobao.com/') === 0)
+        .map(simple)
+console.log('5.通过“商品URL”找出所有在淘宝上的产品，并用（2）简化格式')
+console.log(r5)
+
+// 6.找出某品牌的所有支持电辅加热和自动上水的产品，并用（2）简化格式
+// 提示：用函数生成迭代函数，这样可以把品牌名称作为参数传入
+/*
+  function getFilter6(brand) {
+    return (p) => {...}
+  }
+*/
+function getFilter6(brand) {
+  return p => p['品牌'] === brand
+}
+var r6 = products.filter(getFilter6('诺芝'))
+                 .filter(p => p['电辅加热'] === 'Y' && p['自动上水'] === 'Y')
+                 .map(simple)
+console.log('6.找出某品牌的所有支持电辅加热和自动上水的产品，并用（2）简化格式')
+console.log(r6)
+
+// 或者用串联迭代方法的写法，自选其一
+
+// 7.现在某客户需要按产品id购买产品，按照数据计算出总价
+// 格式为 {id: x, count: y}
+var data7 = [
+  {id: 100332, count: 20},
+  {id: 100168, count: 2},
+  {id: 100221, count: 88},
+  {id: 100008, count: 1},
+  {id: 100175, count: 13},
+  {id: 100312, count: 30},
+  {id: 100319, count: 130},
+]
+var r7 = data7.reduce(
+  (sum, d) => {
+    var id = d.id
+    var p = products.find(p => p.id == id)
+    if (p) {
+      sum += p['价格（¥）'] * p['销量']
+    }
+    return sum
+  },
+  0
+)
+console.log('7.现在某客户需要按产品id购买产品，按照数据计算出总价')
+console.log(r7)
+
+// 8.找出所有能效等级为1的产品
+var r8 = products.filter(p => p['能效等级'] == 1)
+console.log('8.找出所有能效等级为1的产品')
+console.log(r8)
+
+// 9.按照销量，找出最畅销的品牌名称（如果销量没有数据，该条数据就不计算）
+var brandSaleMap = products.reduce(
+  (ret, p) => {
+    var s = p['价格（¥）'] * p['销量']
+    var brand = p['品牌']
+    if (!Number.isNaN(s)) {
+      if (ret[brand]) {
+        ret[brand] += s
+      } else {
+        ret[brand] = s
+      }
+    }
+    return ret
+  },
+  {}
+)
+var [maxBrand2, maxNum2] = findMaxBrandMap(brandSaleMap)
+console.log('9.按照销量，找出最畅销的品牌名称（如果销量没有数据，该条数据就不计算）')
+console.log(maxBrand2)
+// 10.找出真空管数量一共有多少种规格（数组）
+// 例如[16, 18, 24...]
+var r10 = products.reduce(
+  (ret, p) => {
+    if (p['真空管数（条）'] && ret.indexOf(p['真空管数（条）']) == -1) {
+      ret.push(p['真空管数（条）'])
+    }
+    return ret
+  }, []
+)
+console.log('10.找出真空管数量一共有多少种规格（数组）')
+console.log(r10)
+// 11.一共有哪些品牌？（数组）
+var r11 = products.reduce(
+  (ret, p) => {
+    if (ret.indexOf(p['品牌']) == -1) {
+      ret.push(p['品牌'])
+    }
+    return ret
+  }, []
+)
+console.log('11.一共有哪些品牌？（数组）')
+console.log(r11)
+// 12.真空管类型的材质有哪些种？（数组）
+var r12 = products.reduce(
+  (ret, p) => {
+    if (ret.indexOf(p['真空管材质']) == -1) {
+      ret.push(p['真空管材质'])
+    }
+    return ret
+  }, []
+)
+console.log('12.真空管类型的材质有哪些种？（数组）')
+console.log(r12)
+// 13.现在需要按以下条件打印出最便宜的产品列表（数组），并打印总价
+// 条件 集热方式=太阳能，子类=真空管，管数为18，24, 40, 48各需要10台
+// 提示：按上面的条件应该选出最便宜的4个商品打印（按（2）格式化）并算总价
+var cheapProducts = [18, 24, 42, 48].map(
+  (n) => {
+    var prices = products.filter(p => p['集热方式'] == '太阳能' &&
+                                      p['子类'] == '真空管' &&
+                                      p['真空管数（条）'] == n &&
+                                      p['价格（¥）'])
+                         .map(p => p['价格（¥）'])
+    var min = Math.min(...prices)
+    return products.find(p => p['价格（¥）'] === min)
+  }
+).map(simple)
+
+console.log('13.现在需要按以下条件打印出最便宜的产品列表（数组），并打印总价')
+console.log(cheapProducts)
+console.log(cheapProducts.reduce((sum, p) => {
+  return sum + p['价格（¥）'] * 10
+}, 0))
+</script>
+</body>
+</html>
