@@ -9,7 +9,7 @@
   - [修改 element](#修改-element)
   - [增减element](#增减element)
   - [DOM事件](#dom事件)
-- [html相关元素](#html相关元素)autoauto
+- [html相关元素](#html相关元素)
 
 ## Lodash
 

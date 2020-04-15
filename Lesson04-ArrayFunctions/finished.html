@@ -13,7 +13,8 @@
 // forEach虽然不需要返回值，但是可以给单行数据属性赋值新内容
 
 products.forEach(p => {
-  p['价格（¥）'] = parseInt(p['价格（¥）'].replace(',', '').replace('¥', ''))
+  p['价格（¥）'] = parseInt(p['价格（¥）']
+    .replace(',', '').replace('¥', ''))
   p['蓄水量（L）']= parseInt(p['蓄水量（L）'])
   p['重量（KG）'] = parseFloat(p['重量（KG）'])
   p['真空管数（条）'] = parseInt(p['真空管数（条）'])
@@ -68,7 +69,7 @@ console.log('4.找出产品最多的品牌，打印产品数和品牌名称')
 console.log(maxBrand, maxNum)
 // 5.通过“商品URL”找出所有在淘宝上的产品，并用（2）简化格式
 var r5 = products.filter(p => p['商品URL'].indexOf('https://item.taobao.com/') === 0)
-        .map(simple)
+                 .map(simple)
 console.log('5.通过“商品URL”找出所有在淘宝上的产品，并用（2）简化格式')
 console.log(r5)
 
