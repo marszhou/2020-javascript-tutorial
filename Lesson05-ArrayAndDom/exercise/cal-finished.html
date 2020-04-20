@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+  <link rel="stylesheet" href="./style/cal.css">
+  <script src="./js/lodash.min.js"></script>
+</head>
+<body>
+<h1>计算器</h1>
+  <ul id="cal">
+    <li class='size4 input' id='result'></li>
+    <li class='key func' onclick='pressClear()'>C</li>
+    <li class='key func' onclick='pressTogglePositive()'>±</li>
+    <li class='key func' onclick='pressPercent()'>％</li>
+    <li class='key operator' onclick='pressOperator("/")'>÷</li>
+    <li class='key' onclick="pressNum(7)">7</li>
+    <li class='key' onclick="pressNum(8)">8</li>
+    <li class='key' onclick="pressNum(9)">9</li>
+    <li class='key operator' onclick='pressOperator("*")'>×</li>
+    <li class='key' onclick="pressNum(4)">4</li>
+    <li class='key' onclick="pressNum(5)">5</li>
+    <li class='key' onclick="pressNum(6)">6</li>
+    <li class='key operator' onclick='pressOperator("-")'>-</li>
+    <li class='key' onclick="pressNum(1)">1</li>
+    <li class='key' onclick="pressNum(2)">2</li>
+    <li class='key' onclick="pressNum(3)">3</li>
+    <li class='key operator' onclick='pressOperator("+")'>+</li>
+    <li class='key size2' onclick="pressNum(0)">0</li>
+    <li class='key' onclick='pressFloat()'>.</li>
+    <li class='key operator'onclick='pressEqual()'>=</li>
+  </ul>
+
+  <script src="./js/cal.js"></script>
+</body>
+</html>
