@@ -17,11 +17,15 @@ function pressClear() {
   }
   render()
 }
+function currentField() {
+  return calInfo.operator === null ? calInfo.x : calInfo.y
+}
+
 /**
  * 按下切换正负号按钮
  */
 function pressTogglePositive() {
-  var current = calInfo.operator === null ? calInfo.x : calInfo.y
+  var current = currentField()
   var str = fieldToString(current)
   var field = stringToField(-+str + '')
   _.assign(current, field)
@@ -31,7 +35,7 @@ function pressTogglePositive() {
  * 按下百分号按钮
  */
 function pressPercent() {
-  var current = calInfo.operator === null ? calInfo.x : calInfo.y
+  var current = currentField()
   var str = fieldToString(current)
   var field = stringToField(str / 100 + '')
   _.assign(current, field)
@@ -50,7 +54,7 @@ function pressOperator(o) {
  * 按浮点按钮
  */
 function pressFloat() {
-  var current = calInfo.operator === null ? calInfo.x : calInfo.y
+  var current = currentField()
   current.hasFloat = true
   render()
 }
@@ -69,7 +73,7 @@ function pressEqual() {
  * 按数字按钮
  */
 function pressNum(n) {
-  var current = calInfo.operator === null ? calInfo.x : calInfo.y
+  var current = currentField()
   if (current.hasFloat) {
     current.f += '' + n
   } else {

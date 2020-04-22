@@ -15,6 +15,7 @@
 
 <!-- [文档](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/template_strings) -->
 
+
 - 使用反引号
 - 可使用多行字符串
 - 可插入表达式
@@ -137,8 +138,12 @@ Element的遍历属性
 - [append()](https://developer.mozilla.org/zh-CN/docs/Web/API/ParentNode/append)
 - [prepend()](https://developer.mozilla.org/zh-CN/docs/Web/API/ParentNode/prepend)
 - [insertBefore()](https://developer.mozilla.org/zh-CN/docs/Web/API/Node/insertBefore)
+- [insertAdjacentElement()](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/insertAdjacentElement)
+- [insertAdjacentText()](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/insertAdjacentText)
+- [insertAdjacentHTML()](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/insertAdjacentHTML)
 - [removeChild()](https://developer.mozilla.org/zh-CN/docs/Web/API/Node/removeChild)
 - [remove()](https://developer.mozilla.org/zh-CN/docs/Web/API/ChildNode/remove)
+- [replaceChild()](https://developer.mozilla.org/zh-CN/docs/Web/API/Node/replaceChild)
 
 - [document.createElement()](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/createElement)
 
