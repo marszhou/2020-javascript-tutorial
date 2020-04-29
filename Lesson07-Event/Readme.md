@@ -4,7 +4,7 @@
 
 ## 事件的绑定（binding)
 
-###注册监听
+### 注册监听
 
 EventTarget.addEventListener
 
