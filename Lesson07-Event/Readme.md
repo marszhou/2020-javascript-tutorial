@@ -61,6 +61,8 @@ function handleClick(event) {
 - [演示](https://jsbin.com/surivup/edit?html,console,output)
 - [动态演示](https://jsbin.com/vusopil/edit?css,js,output)
 
+Input
+
 - [blur](https://jsbin.com/joneguy/edit?html)
 - [change](https://jsbin.com/cifufaq/edit?html,output)
 - [focus](https://jsbin.com/hesivoc/1/edit?html,output)
@@ -88,6 +90,8 @@ Click
 - [click](https://jsbin.com/cosuyoc/edit?html,output)
 - [which button click](https://jsbin.com/yesigit/edit?html,output)
 - [dblclick](https://jsbin.com/dihibeh/edit?html,output)
+
+Load
 
 - [load](https://jsbin.com/suzuxaf/edit?html,output)
 - [img onload](https://jsbin.com/vuqakuh/edit?html,output)
