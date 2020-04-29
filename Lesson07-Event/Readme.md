@@ -26,7 +26,7 @@ DOM 元素属性
 myButton.onclick = function(event){alert('Hello world');};
 ```
 
-###注销监听
+### 注销监听
 
 EventTarget.removeEventListener
 
