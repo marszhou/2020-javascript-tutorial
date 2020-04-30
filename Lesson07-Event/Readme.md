@@ -48,7 +48,7 @@ function handleClick(event) {
 ## Event 对象属性和方法
 
 - [event.target](https://developer.mozilla.org/zh-CN/docs/Web/API/Event/target) 触发事件的当前元素
-- [event.type](https://developer.mozilla.org/zh-CN/docs/Web/API/Event/type) 事件类型
+- [event.type](https://developer.mozilla.org/zh-CN/docs/Web/API/Event/type) 事件类型 [所有的类型](https://developer.mozilla.org/zh-CN/docs/Web/Events)
 
 - [event.preventDefault()](https://developer.mozilla.org/zh-CN/docs/Web/API/Event/preventDefault) 阻止默认动作
 - [event.stopPropagation()](https://developer.mozilla.org/zh-CN/docs/Web/API/Event/stopPropagation) 停止冒泡
