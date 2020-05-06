@@ -571,19 +571,69 @@ border-left-width: 2px;
 
 ## Javascript 操作CSS
 
-*class操作*
+**class操作**
 
 - .className属性
 - .classList属性
 
-*修改style值*
+**修改style值**
 
 - .style.propertyName
 
-**css属性的名字里的```-```替换成驼峰形式**
+**css属性的名字里的```-```替换成驼峰形式**，比如 background-image 变成js属性就是backgroundImage
 
 ## 使用选择器选择元素
 
 - document.querySelector()
 - document.querySelectorAll()
 
+## 练习
+
+1. 写一个跟随鼠标移动的效果
+
+要求：
+1. 鼠标按下的时候，跟随的层出现
+2. 鼠标松开的时候，跟随的层消失
+3. 鼠标移动的时候，如果鼠标是按下状态，层跟随移动
+
+提示
+
+使用document.documentElement绑定事件
+
+
+```html
+<style>
+  .trail { /* className for the trail elements */
+    position: absolute;
+    height: 6px; width: 6px;
+    border-radius: 3px;
+    background: teal;
+  }
+  body {
+    height: 300px;
+  }
+</style>
+
+<script>
+  // Your code here.
+</script>
+```
+
+2. 写一个Tab界面的效果，高亮当前选中的tab
+
+要求：
+
+1. 完全用函数输出界面
+2. 数据在feeds.js中，是一个10个元素的数组
+3. 初始化函数形式为：函数名(数组)
+
+提示：显示隐藏元素
+
+```html
+<div style='display:none'>隐藏</div>
+```
+
+## CSS教程及手册
+
+- [教程](http://www.w3school.com.cn/css/index.asp)
+- [手册](http://www.w3school.com.cn/cssref/i  ndex.asp)
