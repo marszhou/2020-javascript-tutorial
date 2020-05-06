@@ -636,4 +636,4 @@ border-left-width: 2px;
 ## CSS教程及手册
 
 - [教程](http://www.w3school.com.cn/css/index.asp)
-- [手册](http://www.w3school.com.cn/cssref/i  ndex.asp)
+- [手册](http://www.w3school.com.cn/cssref/index.asp)
