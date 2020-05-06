@@ -27,7 +27,41 @@
   //
   // Your code here
 
+  function onKeydown(event) {
+    if (event.keyCode === 40) {
+      inflate()
+    } else if(event.keyCode === 38) {
+      deflate()
+    }
+  }
 
+  function inflate() {
+    if (exploded) return
+    size = size * 1.1
+    if (size > 800) {
+      exploded = true
+    }
+    render()
+  }
+
+  function deflate() {
+    if (exploded || size<10) return
+    size = size * 0.9
+    render()
+  }
+
+  function render() {
+    if (exploded) {
+      ballon.innerText = '💥'
+    }
+    ballon.style.fontSize = size + 'px'
+  }
+
+  var exploded = false // 爆了？
+  var size = 10        // 大小
+  var ballon = document.getElementById('ballon')
+
+  window.addEventListener('keydown', onKeydown)
 </script>
 
 </body>
