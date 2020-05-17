@@ -1,0 +1,93 @@
+/*清除默认样式*/
+*{
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+/*表盘样式*/
+#box{
+  width:300px;
+  height:300px;
+  border:1px solid #000;
+  border-radius:50%;
+  position:absolute;
+  left:300px; top:100px;
+  background:#fff;
+  box-shadow:1px 1px 5px #000;
+}
+/*表心样式*/
+#box .cap{
+  width:20px;
+  border-radius:50%;
+  height:20px;
+  background:#999;
+  position:absolute;
+  left:50%; top:50%;
+  margin:-10px 0 0 -10px;
+}
+/*时、分、秒旋转中心*/
+#box div{
+  transform-origin:center bottom;
+}
+/*时针样式*/
+#box .hour{
+   width:14px;
+   height:80px;
+   background:#000;
+   position:absolute;
+   left:50%;top:50%;
+   margin-left:-7px;
+   margin-top:-80px;
+   border-radius:50% 50% 0 0;
+}
+/*分针样式*/
+#box .min{
+   width:10px;
+   height:100px;
+   background:#282828;
+   position:absolute;
+   left:50%;top:50%;
+   margin-left:-5px;
+   margin-top:-100px;
+   border-radius:50% 50% 0 0;
+}
+/*秒针样式*/
+#box .sec{
+   width:4px;
+   height:120px;
+   background:#f00;
+   position:absolute;
+   left:50%;top:50%;
+   margin-left:-2px;
+   margin-top:-120px;
+}
+/*一般表盘刻度样式*/
+.scale{
+   width:4px;
+   height:10px;
+   background:#000;
+   position:absolute;
+   left:50%;
+   margin-left:-2px;
+   transform-origin:center 150px;
+}
+/*整时表盘刻度样式*/
+.bs{
+   width:6px;
+   height:18px;
+   background:#000;
+   position:absolute;
+   left:50%;
+   margin-left:-3px;
+   transform-origin:center 150px;
+}
+/*时间数值样式*/
+#box span em{
+   margin-top:20px;
+   width:100px;
+   position:absolute;
+   left:50%;
+   margin-left:-50px;
+   text-align:center;
+   font-style:normal;
+}

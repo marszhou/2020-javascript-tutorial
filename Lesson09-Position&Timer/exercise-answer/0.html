@@ -40,6 +40,16 @@
         trail.classList.remove('expand')
         trail.remove()
       })
+
+      var i = 0
+      function dida() {
+        console.log(i++)
+        if (i < 10) {
+          setTimeout(dida, 1000)
+        }
+      }
+
+      setTimeout(() => dida(), 1000)
     </script>
   </body>
 </html>
