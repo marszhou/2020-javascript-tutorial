@@ -20,13 +20,13 @@ function createClock(id) {
 
 function tick(hourHand, minuteHand, secondHand) {
   var d = new Date()
-  var h = d.getHours()%12
+  var h = d.getHours() % 12
   var m = d.getMinutes()
   var s = d.getSeconds()
 
-  var sDegree = s/60*360
-  var mDegree = m/60*360 + sDegree/360
-  var hDegree = h/12*360 + mDegree/360*360/12
+  var sDegree = (s / 60) * 360
+  var mDegree = ((m + sDegree / 360) / 60) * 360
+  var hDegree = ((h + mDegree / 360) / 12) * 360
 
   hourHand.style.transform = `rotate(${hDegree}deg)`
   minuteHand.style.transform = `rotate(${mDegree}deg)`
@@ -34,7 +34,7 @@ function tick(hourHand, minuteHand, secondHand) {
 
   setTimeout(() => {
     tick(...arguments)
-  }, 1000);
+  }, 1000)
 }
 
 function renderClockPlate() {
