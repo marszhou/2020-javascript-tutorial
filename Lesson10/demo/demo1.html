@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+       body {
+         background: #444444;
+         color: white;
+         font: 15px/1.51 system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+         margin:0 auto;
+         max-width:700px;
+         padding:20px;
+      }
+
+      .events{
+        padding:0px 20px 10px 20px;
+        height: 23px;
+      }
+      .events span {
+        height:17px;
+        width:6px;
+        display:inline-block;
+        border-right:1px solid #111;
+
+      }
+      .events span:last-of-type {
+        border:2px solid black;
+        border-bottom: 4px solid #AAA;
+        border-top: 0px;
+        margin-bottom:-17px;
+        margin-left:-2px;
+      }
+      h2 {
+        margin:10px 0 5px 0;
+        clear:both;
+        font-weight: normal;
+        font-size:14px;
+        padding:6px 20px;
+      }
+
+      .trigger-area {
+        margin: 0;
+        display:inline-block;
+        width: 200px;
+        height:50px;
+        border: 1px solid #5ed1ff;
+        padding: 28px 0 0 0;
+        text-align: center;
+        background-color: transparent;
+        cursor:pointer;
+        font-size:17px;
+        -webkit-user-select: none;  /* Chrome  / Safari */
+        -moz-user-select: none;     /* Firefox all */
+        -ms-user-select: none;      /* IE 10+ */
+        user-select: none;          /* Likely future */
+      }
+      .trigger-area.active {
+        background:#2F5065;
+      }
+      .clickme:hover,
+      .clickme:active{
+        background-color: #333;
+      }
+      .clickme:active{
+        padding: 4px 5px;
+      }
+      .reset {
+        display:inline-block;
+        width: 120px;
+        padding: 10px 0 0 0;
+        text-align: center;
+        font-size:14px;
+        cursor:pointer;
+        color:#eee;
+      }
+      .visualizations {
+        margin-top:10px;
+        background:rgba(0,0,0,0.2);
+      }
+      .details {
+        font-size:13px;
+        color:#999;
+      }
+
+      /* stating the obvious: color0 represents our empty color */
+      .color0 { transparent}
+
+      .color1 { background-color: #FFE589}
+      .color2 { background-color: #B9C6FF}
+      .color3 { background-color: #99FF7E}
+      .color4 { background-color: #FFB38A}
+      .color5 { background-color: #A5FCFF}
+      .color6 { background-color: #FF8E9B}
+      .color7 { background-color: #E3FF7E}
+      .color8 { background-color: #FFA3D8}
+      .color9 { background-color: #5ca6ff}
+      .color10 { background-color: #9BFFBB}
+    </style>
+    <script src="./js/lodash.min.js"></script>
+  </head>
+  <body>
+    <a class="trigger-area">Trigger area</a>
+    <a class="reset">Reset</a>
+    <div class="visualizations">
+      <h2>Raw events over time</h2>
+      <div id="raw-events" class="events"></div>
+      <h2>Debounced events <span class="details"> 400ms, trailing</span></h2>
+      <div id="debounced-events" class="events"></div>
+      <h2>Throttle events <span class="details"> 400ms, leading</span></h2>
+      <div id="throttled-events" class="events"></div>
+      <h2>Throttle events <span class="details"> 400ms, trailing</span></h2>
+      <div id="throttled-events2" class="events"></div>
+    </div>
+    <script>
+      window.addEventListener('load', function () {
+        var rawDiv = document.querySelector('#raw-events'),
+          debounceDiv = document.querySelector('#debounced-events'),
+          throttleDiv = document.querySelector('#throttled-events'),
+          throttleDiv2 = document.querySelector('#throttled-events2'),
+          triggerArea = document.querySelector('.trigger-area'),
+          initialized = false,
+          frequency = 100,
+          barLength = 0,
+          globalColor = 2,
+          colorNeedChange = false,
+          interval_id,
+          rawColor = 0,
+          debounceColor = 0,
+          throttleColor = 0,
+          throttleColor2 = 0,
+          maxBarLength = 87
+
+        var drawDebouncedEvent = _.debounce(
+          function (div) {
+            debounceColor = globalColor
+          },
+          frequency * 4,
+          { leading: false, trailing: true }
+        )
+
+        var drawThrottledEvent = _.throttle(
+          function (div) {
+            throttleColor = globalColor
+          },
+          frequency * 4,
+          { leading: true, trailing: false }
+        )
+
+        var drawThrottledEvent2 = _.throttle(
+          function (div) {
+            throttleColor2 = globalColor
+          },
+          frequency * 4,
+          { leading: false, trailing: true }
+        )
+
+        var changeDebouncedColor = _.debounce(
+          function (div) {
+            // Change colors, to visualize easier the "group of events" that is reperesenting this debounced event
+
+            globalColor++
+            if (globalColor > 9) {
+              globalColor = 2
+            }
+          },
+          frequency * 4,
+          { leading: false, trailing: true }
+        )
+
+        function draw_tick_marks() {
+          // every x seconds, draw a tick mark in the bar
+          interval_id = setInterval(function () {
+            barLength++
+            rawDiv.innerHTML += '<span class="color' + rawColor + '" >'
+            debounceDiv.innerHTML +=
+              '<span class="color' + debounceColor + '" >'
+            throttleDiv.innerHTML +=
+              '<span class="color' + throttleColor + '" >'
+            throttleDiv2.innerHTML +=
+              '<span class="color' + throttleColor2 + '" >'
+            rawColor = 0 // make it transparent again
+            debounceColor = 0 // make it transparent again
+            throttleColor = 0
+            throttleColor2 = 0
+
+            if (barLength > maxBarLength) {
+              clearInterval(interval_id)
+            }
+          }, frequency)
+        }
+
+        // Track Mouse movement or clicks for mobile
+        function handleInteraction() {
+          if (!initialized) {
+            initialized = true
+            draw_tick_marks()
+            triggerArea.classList.add('active')
+          }
+          rawColor = globalColor
+          drawDebouncedEvent()
+          drawThrottledEvent()
+            drawThrottledEvent2()
+          changeDebouncedColor()
+        }
+        triggerArea.addEventListener('click', handleInteraction)
+        triggerArea.addEventListener('mousemove', handleInteraction)
+
+        document.querySelector('.reset').addEventListener('click', function () {
+          initialized = false
+          triggerArea.classList.remove('active')
+          rawDiv.innerHTML = ''
+          debounceDiv.innerHTML = ''
+          throttleDiv.innerHTML = ''
+          throttleDiv2.innerHTML = ''
+          barLength = 0
+          clearInterval(interval_id)
+        })
+      })
+    </script>
+  </body>
+</html>
