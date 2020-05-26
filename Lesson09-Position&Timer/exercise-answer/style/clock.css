@@ -5,7 +5,7 @@
   list-style:none;
 }
 /*表盘样式*/
-#box{
+.box{
   width:300px;
   height:300px;
   border:1px solid #000;
@@ -16,7 +16,7 @@
   box-shadow:1px 1px 5px #000;
 }
 /*表心样式*/
-#box .cap{
+.box .cap{
   width:20px;
   border-radius:50%;
   height:20px;
@@ -26,11 +26,11 @@
   margin:-10px 0 0 -10px;
 }
 /*时、分、秒旋转中心*/
-#box div{
+.box div{
   transform-origin:center bottom;
 }
 /*时针样式*/
-#box .hour{
+.box .hour{
    width:14px;
    height:80px;
    background:#000;
@@ -41,7 +41,7 @@
    border-radius:50% 50% 0 0;
 }
 /*分针样式*/
-#box .min{
+.box .min{
    width:10px;
    height:100px;
    background:#282828;
@@ -52,7 +52,7 @@
    border-radius:50% 50% 0 0;
 }
 /*秒针样式*/
-#box .sec{
+.box .sec{
    width:4px;
    height:120px;
    background:#f00;
@@ -82,7 +82,7 @@
    transform-origin:center 150px;
 }
 /*时间数值样式*/
-#box span em{
+.box span em{
    margin-top:20px;
    width:100px;
    position:absolute;

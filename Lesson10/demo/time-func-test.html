@@ -30,8 +30,8 @@
       // throttle test
       logTime()
       var t1 = _.throttle(_.partial(test, createCounter()), 2000, {
-        leading: true,
-        trailing: false,
+        leading: false,
+        trailing: true,
       })
       setInterval(t1, 50)
 
