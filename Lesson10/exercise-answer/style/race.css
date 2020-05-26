@@ -5,6 +5,7 @@
 img.player {
   /* width: 100px; */
   transform: rotateY(0deg);
+  transition: transform 0.8s;
 }
 
 img.player.right {
@@ -16,7 +17,6 @@ img.player.right {
   background-color: transparent;
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
   position: absolute;
-  transition: all 33ms linear;
 }
 
 /* This container is needed to position the front and back side */

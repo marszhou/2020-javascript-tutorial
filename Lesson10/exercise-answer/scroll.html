@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        min-height: 1000vh;
+        margin: 0;
+      }
+      .figure {
+        border: 1px solid black;
+        top: 300px;
+        transition: all 0.2s ease-in;
+      }
+
+      .one {
+        position: fixed;
+      }
+      .two {
+        position: absolute;
+        left: 200px;
+      }
+      .three {
+        position: absolute;
+        left: 400px;
+      }
+      .four {
+        position: absolute;
+        left: 600px;
+      }
+      h2 {
+        margin: 0;
+        background-color: burlywood;
+        text-align: center;
+      }
+    </style>
+    <script src="./js/lodash.min.js"></script>
+    <script></script>
+  </head>
+  <body>
+    <div class="figure one">
+      <h2>fixed</h2>
+      <img
+        src="./images/d8r3ey3-80cde9f5-15c1-4208-8822-036895dbf829.gif"
+        class="player"
+      />
+    </div>
+
+    <div class="figure two">
+      <h2>normal</h2>
+      <img
+        src="./images/d8r3ey3-80cde9f5-15c1-4208-8822-036895dbf829.gif"
+        class="player"
+      />
+    </div>
+
+    <div class="figure three">
+      <h2>throttled</h2>
+      <img
+        src="./images/d8r3ey3-80cde9f5-15c1-4208-8822-036895dbf829.gif"
+        class="player"
+      />
+    </div>
+
+    <div class="figure four">
+      <h2>debounced</h2>
+      <img
+        src="./images/d8r3ey3-80cde9f5-15c1-4208-8822-036895dbf829.gif"
+        class="player"
+      />
+    </div>
+
+    <script>
+      function update(element) {
+        var top = document.documentElement.scrollTop
+        element.style.top = `${top + 300}px`
+      }
+      var throttled = _.throttle(update, 500, {
+        leading: false,
+        trailing: true,
+      })
+      var throttled2 = _.throttle(update, 500, {
+        leading: false,
+        trailing: true,
+      })
+      var debounced = _.debounce(update, 500)
+
+      window.addEventListener('scroll', (e) => {
+        var two = document.querySelector('.two')
+        var three = document.querySelector('.three')
+        var four = document.querySelector('.four')
+
+        update(two)
+        throttled2(three)
+        debounced(four)
+      })
+    </script>
+  </body>
+</html>

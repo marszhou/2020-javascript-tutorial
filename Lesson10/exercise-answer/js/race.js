@@ -126,7 +126,7 @@ function race() {
           if (p === player) {
             console.log(`第${index + 1}位玩家获胜！`)
           } else {
-            p.style.opacity = 0
+            p.style.opacity = 0.3
           }
         })
       } else {
