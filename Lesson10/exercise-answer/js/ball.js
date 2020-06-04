@@ -9,7 +9,7 @@ function ballGenerator() {
     )}, ${_.random(0, 1, true)})`
   }
 
-  function ballDom(x, y) {
+  function createBall(x, y) {
     var element = document.createElement('section')
     element.className = 'stage'
     element.innerHTML = '<figure class="ball"></figure>'
@@ -25,13 +25,15 @@ function ballGenerator() {
     element.style.transition = `all ${1 / fps}s linear`
     return element
   }
+
   function initBall(x, y) {
     var ball = {}
-    ball.element = ballDom(x, y)
+    ball.element = createBall(x, y)
     ball.speed = _.random(5, 20)
     ball.angle = Math.random() * 2 * Math.PI
     return ball
   }
+
   function move(ball, spaceWidth, spaceHeight) {
     var rect = ball.element.getBoundingClientRect()
     var x = rect.x

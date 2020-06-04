@@ -73,7 +73,29 @@
     </div>
 
     <script>
-      // your code please:
+      function update(element) {
+        var top = document.documentElement.scrollTop
+        element.style.top = `${top + 300}px`
+      }
+      var throttled = _.throttle(update, 500, {
+        leading: false,
+        trailing: true,
+      })
+      var throttled2 = _.throttle(update, 500, {
+        leading: false,
+        trailing: true,
+      })
+      var debounced = _.debounce(update, 500)
+
+      window.addEventListener('scroll', (e) => {
+        var two = document.querySelector('.two')
+        var three = document.querySelector('.three')
+        var four = document.querySelector('.four')
+
+        update(two)
+        throttled2(three)
+        debounced(four)
+      })
     </script>
   </body>
 </html>

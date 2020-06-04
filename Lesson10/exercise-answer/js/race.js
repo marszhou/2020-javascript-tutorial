@@ -106,7 +106,7 @@ function race() {
 
   function isFinished(player) {
     var pRect = player.getBoundingClientRect()
-    var rRect = raceRect()
+    var rRect = raceArea()
     if (pRect.x + pRect.width > rRect.width) {
       return player
     }
@@ -141,7 +141,7 @@ function race() {
     container.querySelector('.play').addEventListener('click', handlePlayClick)
   }
 
-  function raceRect() {
+  function raceArea() {
     return {
       width: document.documentElement.clientWidth,
       height:
@@ -153,7 +153,7 @@ function race() {
   function initPlayers(count) {
     players = _.range(count).map((_) => player())
 
-    var playerSize = Math.min(150, raceRect().height / players.length)
+    var playerSize = Math.min(150, raceArea().height / players.length)
     computedStyle.innerText = `.flip-box .player {height: ${playerSize}px}`
     players.forEach((player, index) => {
       container.querySelector('.players').append(player)
