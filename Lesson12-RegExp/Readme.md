@@ -251,31 +251,31 @@ var re = new RegExp("pattern", "flags");
  </thead>
  <tbody>
   <tr>
-   <td><a href="/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec" class="one-pan-link-mark"><code>exec</code></a></td>
+   <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec" class="one-pan-link-mark"><code>exec</code></a></td>
    <td>一个在字符串中执行查找匹配的RegExp方法，它返回一个数组（未匹配到则返回 null）。</td>
   </tr>
   <tr>
-   <td><a href="/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test" class="one-pan-link-mark"><code>test</code></a></td>
+   <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test" class="one-pan-link-mark"><code>test</code></a></td>
    <td>一个在字符串中测试是否匹配的RegExp方法，它返回 true 或 false。</td>
   </tr>
   <tr>
-   <td><a href="/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/match" class="one-pan-link-mark"><code>match</code></a></td>
+   <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/RegExp/match" class="one-pan-link-mark"><code>match</code></a></td>
    <td>一个在字符串中执行查找匹配的String方法，它返回一个数组，在未匹配到时会返回 null。</td>
   </tr>
   <tr>
-   <td><a href="/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/matchAll" class="one-pan-link-mark"><code>matchAll</code></a></td>
+   <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/RegExp/matchAll" class="one-pan-link-mark"><code>matchAll</code></a></td>
    <td>一个在字符串中执行查找所有匹配的String方法，它返回一个迭代器（iterator）。</td>
   </tr>
   <tr>
-   <td><a href="/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/search" class="one-pan-link-mark"><code>search</code></a></td>
+   <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/search" class="one-pan-link-mark"><code>search</code></a></td>
    <td>一个在字符串中测试匹配的String方法，它返回匹配到的位置索引，或者在失败时返回-1。</td>
   </tr>
   <tr>
-   <td><a href="/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/replace" class="one-pan-link-mark"><code>replace</code></a></td>
+   <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/replace" class="one-pan-link-mark"><code>replace</code></a></td>
    <td>一个在字符串中执行查找匹配的String方法，并且使用替换字符串替换掉匹配到的子字符串。</td>
   </tr>
   <tr>
-   <td><a href="/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/split" class="one-pan-link-mark"><code>split</code></a></td>
+   <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/split" class="one-pan-link-mark"><code>split</code></a></td>
    <td>一个使用正则表达式或者一个固定字符串分隔一个字符串，并将分隔后的子字符串存储到数组中的 <code>String</code> 方法。</td>
   </tr>
  </tbody>
