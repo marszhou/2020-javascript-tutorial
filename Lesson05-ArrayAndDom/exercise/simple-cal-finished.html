@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>简易计算器</h1>
+  <input type='text' id='x'><br/>
+  <select id="operator">
+    <option value='+'>加</option>
+    <option value='-'>减</option>
+    <option value='*'>乘</option>
+    <option value='/'>除</option>
+  </select><br/>
+  <input type='text' id='y'><br/>
+  <button onclick='doCal()'> = </button><br/>
+  <hr />
+  <div style='font-size:150%; font-weight: bold' id='result'>
+    0
+  </div>
+
+  <script>
+    // Your Code Please:
+    function doCal() {
+      var x = parseInt(document.getElementById('x').value)
+      var y = parseInt(document.getElementById('y').value)
+      var operator = document.getElementById('operator').value
+
+      // 方法1
+      var result = cal(x, y, operator)
+      document.getElementById('result').innerHTML = result
+
+      // 方法2
+      // document.getElementById('result').innerHTML = eval(x + operator + y)
+    }
+
+    function cal(x, y, operator) {
+      var result = 0
+      switch(operator) {
+        case '+':
+          result = x + y
+          break
+        case '-':
+          result = x - y
+          break
+        case '*':
+          result = x * y
+          break
+        case '/':
+          result = x / y
+          break
+      }
+      return result
+    }
+  </script>
+</body>
+</html>

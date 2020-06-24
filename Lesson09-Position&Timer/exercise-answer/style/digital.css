@@ -1,0 +1,49 @@
+.digital {
+  border: 15px solid black;
+  text-align: center;
+  padding: 50px;
+  border-radius: 185px;
+  transform: scale(0.5);
+  white-space: nowrap;
+  left: -200px;
+  top: 0;
+}
+.digital li {
+  width: 155px;
+  height: 295px;
+  display: inline-block;
+  background-image: url("../images/black-digital-numbers-0-9-numbers-vector-20413785.jpg");
+}
+.d1 {
+  background-position: -130px -15px;
+}
+.d2 {
+  background-position: -326px -15px;
+}
+.d3 {
+  background-position: -522px -15px;
+}
+.d4 {
+  background-position: -718px -15px;
+}
+.d5 {
+  background-position: -130px -355px;
+}
+.d6 {
+  background-position: -326px -355px;
+}
+.d7 {
+  background-position: -522px -355px;
+}
+.d8 {
+  background-position: -718px -355px;
+}
+.d9 {
+  background-position: -130px -696px;
+}
+.d0 {
+  background-position: -326px -696px;
+}
+.dc {
+  background-position: -718px -696px;
+}

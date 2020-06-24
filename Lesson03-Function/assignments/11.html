@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button onclick='run()'>运行</button>
+  <pre id='container'></pre>
+  <script>
+    function run() {
+      var size = parseInt(prompt('输入尺寸：'))
+      document.getElementById('container').innerHTML = printGraph(size)
+    }
+
+    function  printGraph(size) {
+      var c1 = '⭐️'
+      var c2 = '💀'
+      var middle = Math.floor(size/2)
+      var content = '';
+
+      for (var y = 0; y < size; y++) {
+        var row = ''
+        for( var x = 0; x < size; x++) {
+          if (size%2 === 0) {
+            var c = ''
+            var xx = x<middle ? x + 1 : x
+            var yy = y<middle ? y + 1 : y
+            c = Math.abs(xx - middle) + Math.abs(yy - middle) < middle ? c1:c2
+            row += c
+          } else {
+            var c = ''
+            c = Math.abs(x - middle) + Math.abs(y - middle) <= middle ? c1:c2
+            row += c
+          }
+        }
+        content+=row+'\n'
+      }
+      return content
+    }
+  </script>
+</body>
+</html>

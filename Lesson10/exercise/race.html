@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style/race.css" />
+    <script src="./js/random-filter.js"></script>
+  </head>
+  <body>
+    <div class="controls">
+      <div class="pane">
+        <input type="text" />
+        <div class="button">
+          <a
+            href="javascript: void(0)"
+            onclick="document.querySelector('.controls').classList.add('pane2')"
+            >Players</a
+          >
+        </div>
+      </div>
+
+      <div class="pane">
+        <div class="button">
+          <a href="javascript: void(0)">Play</a>
+        </div>
+        <div class="button">
+          <a
+            href="javascript: void(0)"
+            onclick="document.querySelector('.controls').classList.remove('pane2')"
+            >Quit</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-box">
+      <div class="flip-box-inner">
+        <div class="flip-box-front">
+          <img
+            src="./images/d8r3ey3-80cde9f5-15c1-4208-8822-036895dbf829.gif"
+            class="player right"
+          />
+        </div>
+        <div class="flip-box-back">
+          <img
+            src="./images/d8r3ey3-80cde9f5-15c1-4208-8822-036895dbf829.gif"
+            class="player"
+          />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

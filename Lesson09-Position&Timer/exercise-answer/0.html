@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .trail {
+        /* className for the trail elements */
+        position: absolute;
+        height: 6px;
+        width: 6px;
+        /*left: 100px;top: 100px;*/
+        border-radius: 50%;
+        background: teal;
+        transform: translate(-50%, -50%);
+      }
+      .expand {
+        transition: width 0.5s ease-out, height 0.5s ease-out,
+          opacity 0.5s ease-out;
+        /*transition: all 0.5s ease-out;*/
+        height: 100px;
+        width: 100px;
+        opacity: 0.5;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      var trail = document.createElement('div')
+      trail.className = 'trail'
+      document.documentElement.addEventListener('click', (e) => {
+        document.body.appendChild(trail)
+        trail.style.left = e.clientX + 'px'
+        trail.style.top = e.clientY + 'px'
+        setTimeout(() => trail.classList.add('expand'))
+      })
+
+      trail.addEventListener('transitionend', (e) => {
+        trail.classList.remove('expand')
+        trail.remove()
+      })
+
+      var i = 0
+      function dida() {
+        console.log(i++)
+        if (i < 10) {
+          setTimeout(dida, 1000)
+        }
+      }
+
+      setTimeout(() => dida(), 1000)
+    </script>
+  </body>
+</html>

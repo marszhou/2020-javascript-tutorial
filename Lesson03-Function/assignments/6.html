@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button onclick='run()'>运行</button>
+  <div id='container'></div>
+  <script>
+    function run() {
+      var cols = parseInt(prompt('输入列数：'))
+      var rows = parseInt(prompt('输入行数：'))
+      document.getElementById('container').innerHTML = createTable(cols, rows)
+    }
+
+    function createTable(cols,rows) {
+      var result = "<table border='1'>"
+      for(var row = 0;row < rows; row++){
+        result += "<tr>"
+        for(var col = 0;col < cols; col++){
+            result+="<td>" + row + ',' + col + "</td>"
+        }
+        result += "</tr>"
+      }
+      return result+="</table>"
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./js/proovince-city-distinction.js"></script>
+    <script src="./js/lodash.min.js"></script>
+  </head>
+  <body>
+    <select onchange="onSelectChange(0)">
+      <option value="">--省/直辖市--</option>
+      <option value=""></option>
+    </select>
+
+    <select onchange="onSelectChange(1)">
+      <option value="">--市--</option>
+      <option value=""></option>
+    </select>
+
+    <select>
+      <option value="">--区--</option>
+      <option value=""></option>
+    </select>
+
+    <script>
+      var Types = {
+        province: 0,
+        city: 1,
+        distinction: 2,
+      }
+
+      function getSelect(type) {
+        return document.getElementsByTagName('select')[type]
+      }
+
+      function resetSelect(select) {
+        Array.from(select.children)
+          .slice(1)
+          .forEach((option) => option.remove())
+        return select
+      }
+
+      function fillSelect(type, code = '86') {
+        if (type >= document.getElementsByTagName('select').length) {
+          return
+        }
+        var select = getSelect(type)
+        resetSelect(select).firstElementChild.insertAdjacentHTML(
+          'afterend',
+          _.toPairs(areas[code])
+            .map((pair) => `<option value='${pair[0]}'>${pair[1]}</option>`)
+            .join('')
+        )
+        fillSelect(type + 1, '')
+      }
+
+      function onSelectChange(type) {
+        var select = getSelect(type)
+        var code = select.value
+        fillSelect(type + 1, code)
+      }
+
+      fillSelect(Types.province)
+    </script>
+  </body>
+</html>
