@@ -13,6 +13,12 @@
       }
     }
 
+    class CustomError2 extends Error {
+      toString() {
+        return `${this.name}(${this.code})`
+      }
+    }
+
     function aError(input) {
       switch (input) {
         case 1:
@@ -24,27 +30,30 @@
           e.name = "NOT_FOUND"
           e.code = 404
           throw e
+        case 4:
+          throw new CustomError2()
         default:
           console.log("Success!")
           break
       }
     }
-
-    try {
-      aError(3)
-    }
-    catch (e){
-      if (e instanceof CustomError) {
-        console.error("这是一个自定义错误: " + e.code)
-        console.error(e)
-      } else if (e instanceof Error) {
-        console.error(e)
-      } else {
-        console.error('⚠️' + e)
+    try{
+      try {
+        aError(4)
       }
-    }
-    finally {
-      console.log("结束了")
+      catch (e){
+        if (e instanceof CustomError) {
+          console.error("这是一个自定义错误: " + e.code)
+          console.error(e)
+        } else if (e instanceof Error) {
+          console.error(e)
+          throw e
+        } else {
+          throw e
+        }
+      }
+    } catch (e) {
+      console.log("我来处理")
     }
   </script>
 </body>

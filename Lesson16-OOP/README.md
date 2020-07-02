@@ -9,7 +9,7 @@ class ClassName {
   }
 
   // properties
-  let foo = 123
+  foo = 123
 
   // methods
   bar () {
