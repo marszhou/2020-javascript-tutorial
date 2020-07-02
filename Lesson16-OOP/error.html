@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    class CustomError extends Error {
+      toString() {
+        return `${this.name}(${this.code})`
+      }
+    }
+
+    function aError(input) {
+      switch (input) {
+        case 1:
+          throw "太可怕了😨"
+        case 2:
+          throw new Error("An error occured!")
+        case 3:
+          let e = new CustomError()
+          e.name = "NOT_FOUND"
+          e.code = 404
+          throw e
+        default:
+          console.log("Success!")
+          break
+      }
+    }
+
+    try {
+      aError(3)
+    }
+    catch (e){
+      if (e instanceof CustomError) {
+        console.error("这是一个自定义错误: " + e.code)
+        console.error(e)
+      } else if (e instanceof Error) {
+        console.error(e)
+      } else {
+        console.error('⚠️' + e)
+      }
+    }
+    finally {
+      console.log("结束了")
+    }
+  </script>
+</body>
+</html>
