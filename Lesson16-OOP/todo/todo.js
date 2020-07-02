@@ -10,6 +10,21 @@ function todo(containerId) {
     // SHOW_ACTIVE: 显示未完成
     // SHOW_COMPLETED: 显示已完成
     visibilityFilter: 'SHOW_ALL',
+    addTodo(text) {
+      const todo = {
+        id: ++nextTodoId,
+        text,
+        completed: false, // 新添加的todo，completed值是false
+      }
+      this.todos.push(todo)
+    },
+    toggleTodo(id) {
+      let find = this.todos.find((todo) => todo.id === id)
+      find.completed = !find.completed
+    },
+    setVisibilityFilter(filter) {
+      this.visibilityFilter = filter
+    },
     // 工具方法
     getVisibleTodos(filter) {
       switch (filter) {
@@ -20,7 +35,7 @@ function todo(containerId) {
         case 'SHOW_COMPLETED':
           return this.todos.filter((todo) => todo.completed)
       }
-    },
+    }
   }
 
   let nextTodoId = 10
@@ -78,53 +93,30 @@ function todo(containerId) {
       this.list = this.container.querySelector('.list')
       this.list.addEventListener('click', this.handleTodoItemClick.bind(this))
     },
-    // 更新界面
-    render() {
-      this.renderTodoList()
-      this.renderFooter()
-    },
     // 表单提交时
     handleFormSubmit(e) {
       e.preventDefault()
       let text = this.form.todoText.value.trim()
       if (text.length > 0) {
-        this.addTodo(htmlEncode(text))
+        store.addTodo(text)
       }
       this.form.todoText.value = ''
       this.form.todoText.focus()
+      this.render()
     },
     // 过滤条件点击时
     handleFilterLinkClick(linkElement, e) {
       e.preventDefault()
       const filter = linkElement.getAttribute('filter-value')
-      this.setVisibilityFilter(filter)
+      store.setVisibilityFilter(filter)
+      this.render()
     },
     handleTodoItemClick(e) {
       if (e.target.tagName !== 'LI') return
 
       const li = e.target
       let id = +li.getAttribute('todo-id')
-      this.toggleTodo(id)
-    },
-    // 添加一条todo
-    addTodo(text) {
-      const todo = {
-        id: ++nextTodoId,
-        text: text,
-        completed: false, // 新添加的todo，completed值是false
-      }
-      store.todos.push(todo)
-      this.render()
-    },
-    // 切换todo状态
-    toggleTodo(id) {
-      let find = store.todos.find((todo) => todo.id === id)
-      find.completed = !find.completed
-      this.render()
-    },
-    // 设置过滤条件
-    setVisibilityFilter(filter) {
-      store.visibilityFilter = filter
+      store.toggleTodo(id)
       this.render()
     },
     renderTodoList() {
@@ -156,6 +148,11 @@ function todo(containerId) {
         )
       currentLink.classList.add('current')
       currentLink.querySelector('a').classList.add('not-active')
+    },
+    // 更新界面
+    render() {
+      this.renderTodoList()
+      this.renderFooter()
     },
   }
 
