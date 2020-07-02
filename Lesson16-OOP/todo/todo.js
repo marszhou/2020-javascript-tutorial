@@ -3,27 +3,26 @@ function todo(containerId) {
     // todos 为 todo item 列表
     todos: [
     ],
-    // visibility Filter
-    // 显示todos列表时的过滤条件
-    // 有三个值可选：
-    // SHOW_ALL: 显示全部
-    // SHOW_ACTIVE: 显示未完成
-    // SHOW_COMPLETED: 显示已完成
     visibilityFilter: 'SHOW_ALL',
     addTodo(text) {
       const todo = {
-        id: ++nextTodoId,
+        id: this.generateNextTodoId(),
         text,
         completed: false, // 新添加的todo，completed值是false
       }
+      this.todos = this.load().todos
       this.todos.push(todo)
+      this.save()
     },
     toggleTodo(id) {
+      this.todos = this.load().todos
       let find = this.todos.find((todo) => todo.id === id)
       find.completed = !find.completed
+      this.save()
     },
     setVisibilityFilter(filter) {
       this.visibilityFilter = filter
+      this.save()
     },
     // 工具方法
     getVisibleTodos(filter) {
@@ -35,13 +34,30 @@ function todo(containerId) {
         case 'SHOW_COMPLETED':
           return this.todos.filter((todo) => todo.completed)
       }
+    },
+    save() {
+      localStorage.setItem('todo-app', JSON.stringify({
+        filter: this.visibilityFilter,
+        todos: this.todos
+      }))
+    },
+    load() {
+      return JSON.parse(localStorage.getItem('todo-app')) || {filter: 'SHOW_ALL', todos: []}
+    },
+    generateNextTodoId() {
+      return Math.random().toString(36).substr(2)
+    },
+    init() {
+      let value = this.load()
+      this.todos = value.todos
+      this.visibilityFilter = value.filter
     }
   }
 
-  let nextTodoId = 10
   const app = {
     // 初始化，插入UI
     init(containerId) {
+      store.init()
       this.container = document.getElementById(containerId)
       const html = `
       <form>
@@ -115,7 +131,7 @@ function todo(containerId) {
       if (e.target.tagName !== 'LI') return
 
       const li = e.target
-      let id = +li.getAttribute('todo-id')
+      let id = li.getAttribute('todo-id')
       store.toggleTodo(id)
       this.render()
     },
