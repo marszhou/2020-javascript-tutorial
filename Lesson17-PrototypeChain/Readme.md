@@ -42,7 +42,7 @@ Cat instanceof Function // true
 
 ![构造方法的原型关系](https://tva1.sinaimg.cn/large/007S8ZIlly1ggjky41q3fj30gp079q35.jpg)
 
-![实例的原型关系](https://tva1.sinaimg.cn/large/007S8ZIlly1ggjkwq3ot1j30bp0a1aaf.jpg)
+![实例的原型关系](https://tva1.sinaimg.cn/large/007S8ZIlly1ggjl6xcm7cj30bp0a1wet.jpg)
 
 ## 例子
 
