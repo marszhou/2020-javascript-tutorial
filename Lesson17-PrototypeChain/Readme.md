@@ -39,11 +39,12 @@ Cat instanceof Function // true
 
 * .prototype
 
-![](https://tva1.sinaimg.cn/large/007S8ZIlly1ggjky41q3fj30gp079q35.jpg)
 
-![](https://tva1.sinaimg.cn/large/007S8ZIlly1ggjkwq3ot1j30bp0a1aaf.jpg)
+![构造方法的原型关系](https://tva1.sinaimg.cn/large/007S8ZIlly1ggjky41q3fj30gp079q35.jpg)
 
-## 实例
+![实例的原型关系](https://tva1.sinaimg.cn/large/007S8ZIlly1ggjkwq3ot1j30bp0a1aaf.jpg)
+
+## 例子
 
 ![](https://tva1.sinaimg.cn/large/007S8ZIlly1ggjkzh8at0j30f109hq3a.jpg)
 ```js
