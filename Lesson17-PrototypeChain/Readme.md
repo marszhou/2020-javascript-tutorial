@@ -89,3 +89,81 @@ d.__proto__ === Dog.prototype // true
 ```
 
 得到一个对象的原型也可以用```Object.getPrototypeOf```方法
+
+
+## 扩展原生对象方法
+
+### 为原生对象添加新方法
+
+```js
+String.prototype.repeat = function(times) {
+  return new Array(times+1).join(this)
+}
+
+alert( "a".repeat(3) ) // aaa
+```
+
+```js
+Object.prototype.each = function(f) {
+  for(var prop in this) {
+    if (Object.prototype.hasOwnProperty(prop)) continue
+    var value = this[prop]
+    f.call(null, prop, value)
+  }
+}
+
+var obj = { name: 'John', age: 25 }
+obj.each(function(prop, val) {
+  console.log(`${prop} = ${val}`) // name -> age
+})
+```
+
+### 为兼容而扩展对象
+
+```js
+if (!Object.create) {
+  Object.create = function(proto) {
+    function F() {}
+    F.prototype = proto
+    return new F
+  }
+}
+```
+
+### 替换已有方法
+
+```js
+Array.prototype.join = (function(_super) {
+    return function() {
+        console.log("Hey, you called join!");
+        return _super.apply(this, arguments);
+    };
+})(Array.prototype.join);
+```
+
+### mixin
+
+```js
+// mixin
+let sayHiMixin = {
+  sayHi() {
+    alert(`Hello ${this.name}`);
+  },
+  sayBye() {
+    alert(`Bye ${this.name}`);
+  }
+};
+
+// usage:
+class User {
+  constructor(name) {
+    this.name = name;
+  }
+}
+
+// copy the methods
+Object.assign(User.prototype, sayHiMixin);
+
+// now User can say hi
+new User("Dude").sayHi(); // Hello Dude!
+```
