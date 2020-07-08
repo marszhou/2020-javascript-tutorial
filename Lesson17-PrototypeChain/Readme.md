@@ -167,3 +167,112 @@ Object.assign(User.prototype, sayHiMixin);
 // now User can say hi
 new User("Dude").sayHi(); // Hello Dude!
 ```
+
+### mixin 继承
+
+```js
+let sayMixin = {
+  say(phrase) {
+    console.log(phrase);
+  }
+};
+
+let sayHiMixin = {
+  __proto__: sayMixin, // (或者，我们可以在这儿使用 Object.create 来设置原型)
+
+  sayHi() {
+    // 调用父类方法
+    super.say(`Hello ${this.name}`); // (*)
+  },
+  sayBye() {
+    super.say(`Bye ${this.name}`); // (*)
+  }
+};
+
+class User {
+  constructor(name) {
+    this.name = name;
+  }
+
+  test() {
+    return 'test'
+  }
+}
+
+class Worker extends User {
+  job = 'sit'
+}
+
+// 拷贝方法
+Object.assign(Worker.prototype, sayHiMixin);
+
+// 现在 User 可以打招呼了
+new Worker("Dude").sayHi(); // Hello Dude!
+```
+
+### event mixins
+
+```js
+let eventMixin = {
+  /**
+   * 订阅事件，用法：
+   *  menu.on('select', function(item) { ... }
+  */
+  on(eventName, handler) {
+    if (!this._eventHandlers) this._eventHandlers = {};
+    if (!this._eventHandlers[eventName]) {
+      this._eventHandlers[eventName] = [];
+    }
+    this._eventHandlers[eventName].push(handler);
+  },
+
+  /**
+   * 取消订阅，用法：
+   *  menu.off('select', handler)
+   */
+  off(eventName, handler) {
+    let handlers = this._eventHandlers && this._eventHandlers[eventName];
+    if (!handlers) return;
+    for (let i = 0; i < handlers.length; i++) {
+      if (handlers[i] === handler) {
+        handlers.splice(i--, 1);
+      }
+    }
+  },
+
+  /**
+   * 生成具有给定名称和数据的事件
+   *  this.trigger('select', data1, data2);
+   */
+  trigger(eventName, ...args) {
+    if (!this._eventHandlers || !this._eventHandlers[eventName]) {
+      return; // 该事件名称没有对应的事件处理程序（handler）
+    }
+
+    // 调用事件处理程序（handler）
+    this._eventHandlers[eventName].forEach(handler => handler.apply(this, args));
+  }
+};
+```
+
+用法：
+
+```js
+// 创建一个 class
+class Menu {
+  choose(value) {
+    this.trigger("select", value);
+  }
+}
+// 添加带有事件相关方法的 mixin
+Object.assign(Menu.prototype, eventMixin);
+
+let menu = new Menu();
+
+// 添加一个事件处理程序（handler），在被选择时被调用：
+menu.on("select", value => alert(`Value selected: ${value}`));
+
+// 触发事件 => 运行上述的事件处理程序（handler）并显示：
+// 被选中的值：123
+menu.choose("123");
+```
