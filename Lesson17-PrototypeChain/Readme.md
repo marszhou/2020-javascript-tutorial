@@ -5,7 +5,7 @@
 ### Object.create
 
 ```js
-var Person = {name: '', say: function() { console.log("hello")}}
+var Person = {name: 'Guo', say: function() { console.log(`hello ${this.name}`)}}
 var p = Object.create(Person)
 ```
 
@@ -13,10 +13,11 @@ var p = Object.create(Person)
 
 ```js
 function Pet(name) {
+  // console.log(this)
   this.name = name
   this.action = "play"
 }
-Pet.prototype.move = function() {}
+Pet.prototype.move = function() { console.log("went a step")}
 var pet = new Pet()
 ```
 
@@ -136,7 +137,7 @@ if (!Object.create) {
 Array.prototype.join = (function(_super) {
     return function() {
         console.log("Hey, you called join!");
-        return _super.apply(this, arguments);
+        return _super.call(this, ...arguments);
     };
 })(Array.prototype.join);
 ```
