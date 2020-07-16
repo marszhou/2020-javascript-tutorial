@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 80px;
+      }
+    </style>
+    <script>
+      function makeSizer(size) {
+        return function () {
+          document.body.style.fontSize = size + 'px'
+        }
+      }
+
+      var size80 = makeSizer(80)
+      var size120 = makeSizer(120)
+      var size160 = makeSizer(160)
+    </script>
+  </head>
+  <body>
+    <a href="#" id="size-80">80</a>
+    <a href="#" id="size-120">120</a>
+    <a href="#" id="size-160">160</a>
+    <script>
+      document.getElementById('size-80').onclick = size80
+      document.getElementById('size-120').onclick = size120
+      document.getElementById('size-160').onclick = size160
+    </script>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+    <script type="text/javascript">
+      function onSubmit(e) {
+        e.preventDefault()
+        const input = document.querySelector('input[name="query"]')
+        const loc = input.value.trim()
+        if (loc.length >= 0) {
+          queryWeather(loc)
+        }
+      }
+
+      function queryWeather(loc) {
+        // https://weatherstack.com/documentation
+        const url = "http://api.weatherstack.com/current"
+        var settings = {
+          "async": true,
+          "crossDomain": true,
+          "url": url+`?access_key=3ecbd1c02a66b1d8bf4eeadd060f776f&units=m&query=${encodeURIComponent(loc)}`,
+          "method": "GET",
+        }
+
+        $.ajax(settings).done(function (response) {
+          addResult(response.location.name, response.current.temperature)
+        });
+      }
+
+      let results = []
+      function addResult(loc, temperature) {
+        const result = {
+          time: new Date(),
+          loc: loc,
+          temperature: temperature,
+        }
+        results.push(result)
+        printResults()
+      }
+
+      function printResults() {
+        document.getElementById('results').innerHTML = results
+          .map(
+            (result) =>
+              `<li>${result.time} - ${result.loc}: ${result.temperature}°C</li>`
+          )
+          .join('')
+      }
+    </script>
+    <form onsubmit="onSubmit(event)">
+      <input type="text" name="query" />
+      <input type="submit" />
+    </form>
+
+    <ul id="results"></ul>
+  </body>
+</html>
