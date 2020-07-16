@@ -7,6 +7,17 @@
 <body>
 
 <script>
+$(function() {
+  $('ul#chapters a').click(e => {
+    e.preventDefault()
+    const url = './' + e.target.getAttribute('data-chapter') + '.html'
+    $.get(url, (responseText) => {
+      $('#content').html(responseText)
+    })
+  })
+})
+
+/*
 window.onload = () => {
   document.querySelectorAll('ul#chapters a').forEach((link) => {
     link.addEventListener('click', e => {
@@ -19,6 +30,7 @@ window.onload = () => {
     })
   })
 }
+*/
 </script>
 
 <table>

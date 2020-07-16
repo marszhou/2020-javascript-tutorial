@@ -3,7 +3,6 @@
 
 <script>
   ;(function () {
-    var httpRequest
     document
       .getElementById('ajaxButton')
       .addEventListener('click', () =>
@@ -11,7 +10,7 @@
       )
 
     function makeRequest(url, username) {
-      httpRequest = new XMLHttpRequest()
+      var httpRequest = new XMLHttpRequest()
 
       if (!httpRequest) {
         alert('Giving up :( Cannot create an XMLHTTP instance')
@@ -27,10 +26,11 @@
       httpRequest.send('username=' + encodeURIComponent(username))
     }
 
-    function alertContents() {
+    function alertContents(e) {
+      var httpRequest = e.target
       if (httpRequest.readyState === XMLHttpRequest.DONE) {
         if (httpRequest.status === 200) {
-          alert(httpRequest.responseText)
+          console.log(httpRequest.responseText)
         } else {
           alert('There was a problem with the request.')
         }

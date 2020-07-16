@@ -7,7 +7,7 @@
   </head>
   <body>
     <script>
-      var makeCounter = function () {
+      var makeCounter = function (name) {
         var privateCounter = 0
         function changeBy(val) {
           privateCounter += val
@@ -22,11 +22,14 @@
           value: function () {
             return privateCounter
           },
+          log: function() {
+            console.log(name + "的值是：" + privateCounter)
+          }
         }
       }
 
-      var Counter1 = makeCounter()
-      var Counter2 = makeCounter()
+      var Counter1 = makeCounter('counter1')
+      var Counter2 = makeCounter('counter2')
       console.log(Counter1.value()) /* logs 0 */
       Counter1.increment()
       Counter1.increment()

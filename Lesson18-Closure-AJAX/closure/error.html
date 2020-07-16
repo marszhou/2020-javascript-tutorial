@@ -25,9 +25,11 @@
 
         for (var i = 0; i < helpText.length; i++) {
           var item = helpText[i]
-          document.getElementById(item.id).onfocus = function () {
-            showHelp(item.help)
-          }
+          document.getElementById(item.id).onfocus = (function(item) {
+            return function () {
+              showHelp(item.help)
+            }
+          })(item)
         }
       }
 
