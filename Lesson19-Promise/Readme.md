@@ -19,6 +19,8 @@ new Promise(function(resolve, reject) {
     ...
 ```
 
+(摘自廖雪峰的Promise教程)[https://www.liaoxuefeng.com/wiki/1022910821149312/1023024413276544]
+
 在 JavaScript 的世界中，所有代码都是单线程执行的。
 
 由于这个“缺陷”，导致 JavaScript 的所有网络操作，浏览器事件，都必须是异步执行。异步执行可以用回调函数实现：
