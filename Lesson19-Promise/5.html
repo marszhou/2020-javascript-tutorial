@@ -8,15 +8,39 @@
   <body>
     <script>
       var p1 = new Promise(function (resolve, reject) {
-        setTimeout(resolve, 500, 'P1')
+        let timeOut = Math.random() * 1000
+        console.log('P1 timeOut=' + timeOut)
+        setTimeout(() => {
+          if (timeOut < 300) {
+            reject('P1 error: ' + timeOut)
+          } else {
+            resolve('P1: ' + timeOut)
+          }
+        }, timeOut)
       })
       var p2 = new Promise(function (resolve, reject) {
-        setTimeout(resolve, 600, 'P2')
+        let timeOut = Math.random() * 2000
+        console.log('P2 timeOut=' + timeOut)
+        setTimeout(() => {
+          if (timeOut > 1000) {
+            reject('P2 error: ' + timeOut)
+          } else {
+            resolve('P2: ' + timeOut)
+          }
+          console.log('P2 finished')
+        }, timeOut)
       })
       // 同时执行p1和p2，并在它们都完成后执行then:
-      Promise.all([p1, p2]).then(function (results) {
-        console.log(results) // 获得一个Array: ['P1', 'P2']
-      })
+      let now = Date.now()
+      Promise.all([p1, p2])
+        .then(function (results) {
+          console.log(Date.now() - now)
+          console.log(results) // 获得一个Array: ['P1', 'P2']
+        })
+        .catch((error) => {
+          console.log(Date.now() - now)
+          console.error(error)
+        })
     </script>
   </body>
 </html>

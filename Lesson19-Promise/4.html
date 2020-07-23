@@ -25,7 +25,7 @@
         })
       }
       var log = document.getElementById('test-promise-ajax-result')
-      var p = ajax('GET', '/api/categories')
+      var p = ajax('GET', './api/categories.json')
       p.then(function (text) {
         // 如果AJAX成功，获得响应内容
         log.innerText = text

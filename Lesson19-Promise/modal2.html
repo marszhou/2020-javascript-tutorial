@@ -68,32 +68,41 @@
     <!-- /.modal -->
 
     <script>
+      function success(value) {
+        console.log('name=' + value)
+      }
+
+      function cancelled() {
+        console.log('dialog cancelled')
+      }
+
       let dialog = $('#myDialog')
-      let okBtn = dialog.find('.btn-primary')
+      let input = dialog.find('input[name=name]')
       let cancelBtn = dialog.find('.btn-default')
-      let textField = dialog.find('[name=name]')
+      let okBtn = dialog.find('.btn-primary')
 
-      dialog.on('hide.bs.modal', (e) => {
-        okBtn.off('click')
-        cancelBtn.off('click')
-        textField.val('')
-      })
-      dialog.on('shown.bs.modal', (e) => textField.focus())
+      $('#myButton').click(() => {
+        dialog.modal({show: true})
 
-      $('#myButton').click((e) => {
-        new Promise((resolve, reject) => {
-          dialog.modal({ show: true })
-          cancelBtn.click((e) => {
-            reject()
-            dialog.modal('hide')
-          })
-          okBtn.click((e) => {
-            resolve(textField.val())
-            dialog.modal('hide')
-          })
+        cancelBtn.click(() => {
+          cancelled()
+          dialog.modal('hide')
         })
-        .then((r) => console.log('名字', r))
-        .catch(() => console.log('cancelled'))
+
+        okBtn.click(() => {
+          success(input.val())
+          dialog.modal('hide')
+        })
+      })
+
+      dialog.on('shown.bs.modal', () => {
+        input.focus()
+      })
+
+      dialog.on('hidden.bs.modal', () => {
+        cancelBtn.off('click')
+        okBtn.off('click')
+        input.val('')
       })
     </script>
   </body>
